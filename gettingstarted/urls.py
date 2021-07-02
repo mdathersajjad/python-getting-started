@@ -26,7 +26,7 @@ class AddXFS(object):
         return kwargs
 
 class LetterdropProxy(HttpProxy):
-    base_url = 'http://testwithoutcache.localhost:3003'
+    base_url = 'https://sajjad.anchorsms.com'
     proxy_middleware = [
         'djproxy.proxy_middleware.AddXFF',
         'djproxy.proxy_middleware.AddXFH',
@@ -35,7 +35,7 @@ class LetterdropProxy(HttpProxy):
     ]
 
 class LetterdropAssetProxy(HttpProxy):
-    base_url = 'http://testwithoutcache.localhost:3003/_next/'
+    base_url = 'https://sajjad.anchorsms.com/_next/'
     proxy_middleware = [
         'djproxy.proxy_middleware.AddXFF',
         'djproxy.proxy_middleware.AddXFH',
