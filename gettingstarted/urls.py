@@ -16,10 +16,26 @@ import hello.views
 #
 # Learn more here: https://docs.djangoproject.com/en/2.1/topics/http/urls/
 
+class LetterdropProxy(HttpProxy):
+    base_url = 'https://sajjad.anchorsms.com'
+    proxy_middleware = [
+        'djproxy.proxy_middleware.AddXFF',
+        'djproxy.proxy_middleware.AddXFH',
+        'djproxy.proxy_middleware.AddXFP'
+    ]
+
+class LetterdropAssetProxy(HttpProxy):
+    base_url = 'https://sajjad.anchorsms.com/_next/'
+    proxy_middleware = [
+        'djproxy.proxy_middleware.AddXFF',
+        'djproxy.proxy_middleware.AddXFH',
+        'djproxy.proxy_middleware.AddXFP'
+    ]
+
 urlpatterns = [
     path("", hello.views.index, name="index"),
     path("db/", hello.views.db, name="db"),
     path("admin/", admin.site.urls),
-    re_path(r'^blog/(?P<url>.*)$', HttpProxy.as_view(base_url='https://sajjad.anchorsms.com')),
-    re_path(r'^_next/(?P<url>.*)$', HttpProxy.as_view(base_url='https://sajjad.anchorsms.com/_next/'))
+    re_path(r'^blog/(?P<url>.*)$', LetterdropProxy.as_view()),
+    re_path(r'^_next/(?P<url>.*)$', LetterdropAssetProxy.as_view())
 ]
