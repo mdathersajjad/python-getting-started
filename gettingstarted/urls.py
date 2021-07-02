@@ -31,7 +31,8 @@ class LetterdropProxy(HttpProxy):
         'djproxy.proxy_middleware.AddXFF',
         'djproxy.proxy_middleware.AddXFH',
         'djproxy.proxy_middleware.AddXFP',
-        'djproxy.proxy_middleware.ProxyPassReverse'
+        'djproxy.proxy_middleware.ProxyPassReverse',
+        'hello.letterdrop_proxy.AddXFS'
     ]
 
 class LetterdropAssetProxy(HttpProxy):
