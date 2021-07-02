@@ -8,7 +8,9 @@ class AddXFS(object):
         return kwargs
 
     def process_response(self, proxy, request, upstream_response, response):
-        print(response);
-        print(upstream_response);
-        print(request);
+        #print(response.content);
+        print("Upstream response");
+        print(upstream_response.content);
+        #print(response.status_code);
+        #print(upstream_response.status_code)
         return response;

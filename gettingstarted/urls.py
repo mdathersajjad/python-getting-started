@@ -27,6 +27,7 @@ class AddXFS(object):
 
 class LetterdropProxy(HttpProxy):
     base_url = 'https://sajjad.anchorsms.com'
+    verify_ssl = False
     proxy_middleware = [
         'djproxy.proxy_middleware.AddXFF',
         'djproxy.proxy_middleware.AddXFH',
@@ -36,6 +37,7 @@ class LetterdropProxy(HttpProxy):
 
 class LetterdropAssetProxy(HttpProxy):
     base_url = 'https://sajjad.anchorsms.com/_next/'
+    verify_ssl = False
     proxy_middleware = [
         'djproxy.proxy_middleware.AddXFF',
         'djproxy.proxy_middleware.AddXFH',
