@@ -9,4 +9,6 @@ class AddXFS(object):
 
     def process_response(self, proxy, request, upstream_response, response):
         print(response);
+        print(upstream_response);
+        print(request);
         return response;
