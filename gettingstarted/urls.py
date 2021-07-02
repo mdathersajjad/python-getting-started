@@ -16,20 +16,31 @@ import hello.views
 #
 # Learn more here: https://docs.djangoproject.com/en/2.1/topics/http/urls/
 
+class AddXFS(object):
+
+    """Add an updated X-Forwarded-Server header to the upstream request."""
+
+    def process_request(self, proxy, request, **kwargs):
+        kwargs['headers']['X-Forwarded-Server'] = "tranquil-atoll-99599.herokuapp.com";
+
+        return kwargs
+
 class LetterdropProxy(HttpProxy):
-    base_url = 'https://sajjad.anchorsms.com'
+    base_url = 'http://testwithoutcache.localhost:3003'
     proxy_middleware = [
         'djproxy.proxy_middleware.AddXFF',
         'djproxy.proxy_middleware.AddXFH',
-        'djproxy.proxy_middleware.AddXFP'
+        'djproxy.proxy_middleware.AddXFP',
+        'djproxy.proxy_middleware.ProxyPassReverse'
     ]
 
 class LetterdropAssetProxy(HttpProxy):
-    base_url = 'https://sajjad.anchorsms.com/_next/'
+    base_url = 'http://testwithoutcache.localhost:3003/_next/'
     proxy_middleware = [
         'djproxy.proxy_middleware.AddXFF',
         'djproxy.proxy_middleware.AddXFH',
-        'djproxy.proxy_middleware.AddXFP'
+        'djproxy.proxy_middleware.AddXFP',
+        'djproxy.proxy_middleware.ProxyPassReverse'
     ]
 
 urlpatterns = [
