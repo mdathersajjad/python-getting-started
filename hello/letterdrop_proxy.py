@@ -6,3 +6,7 @@ class AddXFS(object):
         kwargs['headers']['X-Forwarded-Server'] = "tranquil-atoll-99599.herokuapp.com";
 
         return kwargs
+
+    def process_response(self, proxy, request, upstream_response, response):
+        print(response);
+        return response;
